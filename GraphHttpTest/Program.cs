@@ -23,7 +23,7 @@ namespace GraphHttpTest
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GetCredentials().AccessToken);
             //request.Version = new Version(1, 1);
 
-            var response = new HttpClient().SendAsync(request).Result;
+            var response = client.HttpProvider.SendAsync(request).Result;
             response.EnsureSuccessStatusCode();
             var content = response.Content.ReadAsStringAsync().Result;
             Debug.WriteLine($"Status {response.StatusCode}: {content}");
